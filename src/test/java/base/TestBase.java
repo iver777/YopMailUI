@@ -1,14 +1,12 @@
 package base;
 
-import dev.failsafe.internal.util.Assert;
-import net.bytebuddy.implementation.InvokeDynamic;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
@@ -38,13 +36,22 @@ public class TestBase {
     driver.findElement(By.id("newmail")).click();
 
     //ifram
+
+        WebElement texto;
     driver.switchTo().frame("ifmail");
-    driver.findElement(By.id("msgto")).sendKeys("locango@yopmail.com");
-    driver.findElement(By.id("msgbody")).sendKeys("ejemplo");
-    driver.findElement(By.id("msgsubject")).sendKeys("asunto");
+    //String email=driver.findElement(By.id("msgfrom']")).getText();
+    driver.findElement(By.id("msgto")).sendKeys("loveo@yopmail.com");
+    driver.findElement(By.id("msgsubject")).sendKeys("Asunto");
+    driver.findElement(By.id("msgbody")).sendKeys("este es un mensaje de prueba");
+    //enviar mensaje
     driver.findElement(By.id("msgsend")).click();
-    String texto=driver.findElement(By.xpath("//div[@class='msgpop-dialog']")).getText();
-    Assertions.assertEquals(texto, "Tu mensaje ha sido enviado");
+
+    //verificar mensaje
+    driver.findElement(By.xpath("//button[@class='md but textu f36']")).click();
+  //  texto=driver.findElement();
+   // Assertions.assertEquals(texto, "Asunto");
+
+
 
 
 
